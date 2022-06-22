@@ -10,13 +10,27 @@ const VideoRouter = new Router()
 
 VideoRouter.get('/list', async(req, res)=> {
     try {
+        let data = await videoController.getAllVideos();
         return res.json({
-            apiPath: 'list'
+            apiPath: data
+        })
+
+    } catch (error) {
+        return res.json({succes: false ,error: true, errorMesage: error?.stack})
+    }
+})
+
+VideoRouter.post('/save', async(req, res)=> {
+    try {
+        let data = await videoController.createVideoDocument(req.body.originUrlVideo);
+        return res.json({
+            newVideo: data
         })
     } catch (error) {
         return res.json({succes: false ,error: true, errorMesage: error?.stack})
     }
 })
+
 VideoRouter.post('/process/convert', async(req, res)=> {
     try {
         console.log('---->>>>>>',req.body)

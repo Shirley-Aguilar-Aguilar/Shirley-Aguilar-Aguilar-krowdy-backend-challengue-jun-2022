@@ -17,7 +17,7 @@ class VIDEOPROCESSCONTROLLER {
             // const isValidFile = await this.validateFile(localPathVideo)
 
             // if(!isValidFile) throw new Error('Error en el archivo')
-            // const outputVideoPath = await this.createOuputPath()
+            // const outputVideoPath = await this.createOutputPath()
 
             await videoController.createStatusProcessVideo('convert', videoId)
 
@@ -50,7 +50,7 @@ class VIDEOPROCESSCONTROLLER {
         return true
     }
 
-    async createOuputPath() {
+    async createOutputPath() {
         return ''
     }
 

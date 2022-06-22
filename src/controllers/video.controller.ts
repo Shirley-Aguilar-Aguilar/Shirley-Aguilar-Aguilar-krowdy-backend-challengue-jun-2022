@@ -3,9 +3,19 @@ import processVideo from "../backingservice/models/videos/processVideo"
 import videoprocesscontroller from "./videomanager.controller"
 import { Types } from 'mongoose'
 class VIDEOCONTROLLER {
+
+    async getAllVideos() {
+        try {
+            const elementsFromTable = await videoSources.find({});       
+            return { elementsFromTable }
+        } catch (error) {
+            throw error
+        }
+    }
+
     async convertVideoWebmToMp4(originUrlVideo: string) {
         try {
-            const originUrlVideoFromLocal = `${__dirname}/inputvideo.webm`
+            const originUrlVideoFromLocal = `${__dirname}/inputvideoBackup.webm`
             const { responseVideo } = await this.createVideoDocument(originUrlVideoFromLocal || originUrlVideo)
             const {outputPath} = await videoprocesscontroller.convert(originUrlVideoFromLocal || originUrlVideo, responseVideo?._id)
             await this.setStatusFinishToVideoDocument(responseVideo?._id, outputPath)

@@ -1,3 +1,12 @@
+## Endpoints desarrollados:
+Listar videos:
+http://localhost:5000/api/v1/video/list
+
+Guardar nuevo video:
+http://localhost:5000/api/v1/video/save
+
+Convertir video:
+http://localhost:5000/api/v1/video/save
 # BACKEND SERVICE MONGODB + RESTIFY
 
 ## HTTP -> nodeJs
